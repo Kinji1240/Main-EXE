@@ -17,7 +17,7 @@ class WeatherApp(App):
 
     def build(self):
         layout = BoxLayout(orientation='vertical')
-        coordinates_df = pd.read_csv('MAINSYS\CSV\IDOKEIDO-UTF8.csv')
+        coordinates_df = pd.read_csv('IDOKEIDO-UTF8.csv')
 
         # coordinates_df（pd.read_csvで読み込んだデータフレーム）の列に 'latitude' と 'longitude' が存在するかを確認
         if 'latitude' in coordinates_df.columns and 'longitude' in coordinates_df.columns:
@@ -69,7 +69,7 @@ class WeatherApp(App):
                         csv_writer.writerows(data)
 
             def re_setting(instance):
-                #subprocess.Popen(["python", "MAINSYS\PROGRAMS\settings.py"])
+                #subprocess.Popen(["python", "settings.py"])
                 App.get_running_app().stop()
                 return
 

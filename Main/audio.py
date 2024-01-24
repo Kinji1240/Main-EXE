@@ -6,7 +6,7 @@ from kivy.core.audio import SoundLoader
 class MusicPlayerApp(App):
     def build(self):
         # 音楽ファイルの読み込み
-        self.sound = SoundLoader.load(r'MAINSYS\AUDIO\六甲おろし.mp3')
+        self.sound = SoundLoader.load(r'六甲おろし.mp3')
 
         if not self.sound:
             print("音楽ファイルの読み込みに失敗しました。")

@@ -9,7 +9,7 @@ import japanize_kivy
 
 class CalendarApp(App):
     def get_fpass(self):
-        filename = 'MAINSYS\CSV\settings.csv'
+        filename = 'settings.csv'
         
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)

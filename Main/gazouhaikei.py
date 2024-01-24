@@ -56,7 +56,7 @@ class MyButton(ToggleButtonBehavior, Image):
 class Test(BoxLayout):
     def __init__(self, **kwargs):
         super(Test, self).__init__(**kwargs)
-        image_dir = "MAINSYS\IMAGE"
+        image_dir = "Main-exe"
         self.orientation = 'vertical'
         self.image_name = ""
         self.current_image_index = 0
@@ -113,7 +113,7 @@ class Test(BoxLayout):
         syokiflg,setflg = self.optflg()
         if syokiflg == '0' and setflg == '0':
             # MAINSYS\CSV\selected_backgrounds.csv に self.image_name を上書き保存
-            csv_file_path = os.path.join("MAINSYS", "CSV", "selected_backgrounds.csv")
+            csv_file_path = os.path.join("selected_backgrounds.csv")
             with open(csv_file_path, mode='w', newline='') as csv_file:
                 csv_writer = csv.writer(csv_file)
                 csv_writer.writerow([self.image_name])
@@ -121,11 +121,11 @@ class Test(BoxLayout):
             print(f"Image confirmed: {self.image_name}")
 
             # "haikeigazou.py" を実行
-            subprocess.Popen(["python", "MAINSYS\PROGRAMS\pos_mover.py"])
+            subprocess.Popen(["python", "pos_mover.py"])
             App.get_running_app().stop()
         elif syokiflg == '1' and setflg == '1':
             # MAINSYS\CSV\selected_backgrounds.csv に self.image_name を上書き保存
-            csv_file_path = os.path.join("MAINSYS", "CSV", "selected_backgrounds.csv")
+            csv_file_path = os.path.join( "selected_backgrounds.csv")
             with open(csv_file_path, mode='w', newline='') as csv_file:
                 csv_writer = csv.writer(csv_file)
                 csv_writer.writerow([self.image_name])
@@ -133,7 +133,7 @@ class Test(BoxLayout):
             print(f"Image confirmed: {self.image_name}")
             pass
         else :
-            subprocess.Popen(["python", "MAINSYS\PROGRAMS\error.py"])
+            subprocess.Popen(["python", "error.py"])
         App.get_running_app().stop()
 
     #def next_image(self, instance):
@@ -148,15 +148,15 @@ class Test(BoxLayout):
         # 戻るボタンが押下されたときの処理
         syokiflg,setflg = self.optflg()
         if syokiflg == '0' and setflg == '0':
-            subprocess.Popen(["python", "MAINSYS\PROGRAMS\syoki.py"])
+            subprocess.Popen(["python", "syoki.py"])
         elif syokiflg == '1' and setflg == '1':
             pass
         else :
-            subprocess.Popen(["python", "MAINSYS\PROGRAMS\error.py"])
+            subprocess.Popen(["python", "error.py"])
         App.get_running_app().stop()
     
     def optflg(self):
-        filename = 'MAINSYS\CSV\onoD_opt.csv'
+        filename = 'onoD_opt.csv'
         
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)

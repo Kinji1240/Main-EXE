@@ -9,7 +9,7 @@ from kivy.core.text import LabelBase
 class CustomColorButtonApp(App):
     def build(self):
         # フォントを登録
-        LabelBase.register(name="CustomFont", fn_regular="MAINSYS/FONT/Mystic Soul.ttf")  # フォントの絶対パスを指定
+        LabelBase.register(name="CustomFont", fn_regular="Mystic Soul.ttf")  # フォントの絶対パスを指定
 
         # ボタンを含むレイアウト
         layout = BoxLayout(orientation='vertical', spacing=10, padding=10)

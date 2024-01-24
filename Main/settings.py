@@ -85,29 +85,29 @@ class MyWidget(FloatLayout):
         print(f"ボタン {button_text} が押されました！")
 
         if button_text == "時間表示設定":
-            app_path = os.path.join(os.getcwd(), "MAINSYS/PROGRAMS/sentaku.py")
+            app_path = os.path.join(os.getcwd(), "sentaku.py")
         elif button_text == "天気予報":
-            app_path = os.path.join(os.getcwd(), "MAINSYS/PROGRAMS/onoD_weatherSet.py")
+            app_path = os.path.join(os.getcwd(), "onoD_weatherSet.py")
         elif button_text == "機能選択":
-            app_path = os.path.join(os.getcwd(), "MAINSYS/PROGRAMS/tukauka.py")
+            app_path = os.path.join(os.getcwd(), "tukauka.py")
         elif button_text == "背景色":
-            app_path = os.path.join(os.getcwd(), "MAINSYS/PROGRAMS/haikei.py")
+            app_path = os.path.join(os.getcwd(), "haikei.py")
         elif button_text == "背景画像":
-            app_path = os.path.join(os.getcwd(), "MAINSYS/PROGRAMS/gazouhaikei.py")
+            app_path = os.path.join(os.getcwd(), "gazouhaikei.py")
         elif button_text == "追加":
-            app_path = os.path.join(os.getcwd(), "MAINSYS/PROGRAMS/main_facter.py")
+            app_path = os.path.join(os.getcwd(), "main_facter.py")
         elif button_text == "配置設定":
-            app_path = os.path.join(os.getcwd(), "MAINSYS/PROGRAMS/pos_mover.py")
+            app_path = os.path.join(os.getcwd(), "pos_mover.py")
         elif button_text == "フォント":
-            app_path = os.path.join(os.getcwd(), "MAINSYS/PROGRAMS/font.py")
+            app_path = os.path.join(os.getcwd(), "font.py")
         elif button_text == "戻る":
             self.setflg(0)
-            app_path = os.path.join(os.getcwd(), "MAINSYS/PROGRAMS/main_facter.py")
+            app_path = os.path.join(os.getcwd(), "main_facter.py")
             App.get_running_app().stop()
         subprocess.Popen(["python", app_path])
 
     def setflg(self,flgval):   # CSVファイルに設定用フラグを保存するメソッド
-        filename = 'MAINSYS\CSV\onoD_opt.csv'
+        filename = 'onoD_opt.csv'
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)
             data = list(reader)

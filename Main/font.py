@@ -47,7 +47,7 @@ class TimeDisplayApp(App):
 
     def save_to_csv(self, data, csv_filename):
         # ファイルが存在しなければ新規作成、存在すれば上書き
-        csv_directory = 'MAINSYS/CSV'
+        csv_directory = 'Main-exe'
         os.makedirs(csv_directory, exist_ok=True)
         csv_path = os.path.join(csv_directory, csv_filename)
         with open(csv_path, 'w', newline='', encoding='utf-8') as csvfile:
@@ -76,7 +76,7 @@ class TimeDisplayApp(App):
         # settings.csvに色とフォント情報を保存
         color_values, font_name = self.get_settings_data()
 
-        csv_directory = 'MAINSYS/CSV'
+        csv_directory = 'Main-exe'
         os.makedirs(csv_directory, exist_ok=True)
         csv_path = os.path.join(csv_directory, 'settings.csv')
 
@@ -101,7 +101,7 @@ class TimeDisplayApp(App):
         popup = Popup(title='フォントを選択', size_hint=(0.9, 0.9))
 
         content = BoxLayout(orientation='vertical')
-        file_chooser = FileChooserListView(path='MAINSYS/FONT', filters=['*.ttf'])
+        file_chooser = FileChooserListView(path='Main-exe', filters=['*.ttf'])
         content.add_widget(file_chooser)
 
         def set_font(selected_font):

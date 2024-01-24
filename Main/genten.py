@@ -6,18 +6,18 @@ from kivy.app import App
 class GentenApp(App):
     def build(self):
         # CSVファイルに緯度・経度・日数を保存するメソッド
-        filename = 'MAINSYS\CSV\onoD_opt.csv'
+        filename = 'onoD_opt.csv'
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)
             data = list(reader)
             senidata = data[11][1]
         
         if senidata == '0':
-            app_path = os.path.join(os.getcwd(), "MAINSYS\PROGRAMS\syoki.py")
+            app_path = os.path.join(os.getcwd(), "syoki.py")
         elif senidata == '1':
-            app_path = os.path.join(os.getcwd(), "MAINSYS\PROGRAMS\main_facter.py")
+            app_path = os.path.join(os.getcwd(), "main_facter.py")
         else:
-            app_path = os.path.join(os.getcwd(), "MAINSYS\PROGRAMS\error.py")
+            app_path = os.path.join(os.getcwd(), "error.py")
         
         self.stop()  # App.get_running_app() を self に変更
         subprocess.Popen(["python", app_path])

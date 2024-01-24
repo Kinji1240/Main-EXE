@@ -13,20 +13,20 @@ class BackgroundChangerApp(App):
     def build(self):
         layout = BoxLayout(orientation='vertical', spacing=10, padding=10)
 
-        # ラベル（背景色変更用）
-        label_background = Label(text="背景色変更")
-        self.label_background = label_background
+        # ラベル（文字色変更用）
+        label_text = Label(text="文字色変更")
+        self.label_text = label_text
 
-        # カラーピッカー（背景色用）
-        self.background_color_picker = ColorPicker()
-        self.background_color_picker.bind(color=self.on_background_color)
+        # カラーピッカー（文字色用）
+        self.text_color_picker = ColorPicker()
+        self.text_color_picker.bind(color=self.on_text_color)
 
         # ボタン
-        button = Button(text="背景色を変更", on_press=self.change_background_color)
+        button = Button(text="文字色を変更", on_press=self.change_text_color)
 
         # レイアウトにウィジェットを追加
-        layout.add_widget(label_background)
-        layout.add_widget(self.background_color_picker)
+        layout.add_widget(label_text)
+        layout.add_widget(self.text_color_picker)
         layout.add_widget(button)
 
         # ウィンドウサイズ変更時にオブジェクトを調整
@@ -38,41 +38,45 @@ class BackgroundChangerApp(App):
         # ウィンドウサイズが変更されたときに呼ばれるメソッド
         # フォントサイズを調整
         font_size = int(0.04 * height)  # 画面高さの4%をフォントサイズとする
-        self.label_background.font_size = font_size
+        self.label_text.font_size = font_size
 
-    def on_background_color(self, instance, value):
-        # ラベルの背景色を変更
-        self.label_background.background_color = value
+    def on_text_color(self, instance, value):
+        # ラベルの文字色を変更
+        self.label_text.color = value
 
-    def change_background_color(self, instance):
+    def change_text_color(self, instance):
         # カラーピッカーの選択色をCSVファイルに保存
-        background_color = self.background_color_picker.color
+        text_color = self.text_color_picker.color
 
-        # 背景色のRGBA値を取得
-        background_red, background_green, background_blue, background_alpha = background_color
-
+        # フォント色のRGBA値を取得
+        text_red, text_green, text_blue, text_alpha = text_color
 
 
         print("確定ボタンが押されました。")
          # ファイルの読み込みと書き込みはここで行います
-        file_path = "MAINSYS\CSV\onoD_opt.csv"
-
+        file_path = "onoD_opt.csv"
+        
         # 既存のCSVファイルを読み込む
         with open(file_path, mode='r') as file:
             reader = csv.reader(file)
             data = list(reader)
+        
+        
+        # 必要な部分を変更
+        data[8][1] = text_red # watchを文字列に変換して代入
+        data[8][2] = text_green
+        data[8][3] = text_blue
+        data[8][4] = text_alpha
+        
 
-
-        data[7][1] = background_red
-        data[7][2] = background_green
-        data[7][3] = background_blue
-        data[7][4] = background_alpha
-
-       # 新しいCSVファイルに書き出す
+        # 新しいCSVファイルに書き出す
         with open(file_path, mode='w', newline='') as file:
             writer = csv.writer(file)
             writer.writerows(data)
+    
+        
 
+ 
 
 
 if __name__ == '__main__':
