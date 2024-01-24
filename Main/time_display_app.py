@@ -60,7 +60,7 @@ class TimeDisplayApp(App):
 
     def save_to_csv(self, data, csv_filename):
         # ファイルが存在しなければ新規作成、存在すれば上書き
-        csv_directory = 'Main-exe'
+        csv_directory = 'Main'
         os.makedirs(csv_directory, exist_ok=True)
         csv_path = os.path.join(csv_directory, csv_filename)
         with open(csv_path, 'w', newline='', encoding='utf-8') as csvfile:
@@ -69,7 +69,7 @@ class TimeDisplayApp(App):
 
     def load_settings_from_csv(self):
         # settings.csvから色とフォント情報を読み取り、ラベルに設定
-        csv_path = os.path.join('settings.csv')
+        csv_path = os.path.join('Main/settings.csv')
         if os.path.exists(csv_path):
             with open(csv_path, 'r', encoding='utf-8') as csvfile:
                 csv_reader = csv.reader(csvfile)
@@ -89,7 +89,7 @@ class TimeDisplayApp(App):
         # settings.csvに色とフォント情報を保存
         color_values, font_name = self.get_settings_data()
 
-        csv_directory = 'Main-exe'
+        csv_directory = 'Main'
         os.makedirs(csv_directory, exist_ok=True)
         csv_path = os.path.join(csv_directory, 'settings.csv')
 
@@ -115,7 +115,7 @@ class TimeDisplayApp(App):
         popup = Popup(title='フォントを選択', size_hint=(0.9, 0.9))
 
         content = BoxLayout(orientation='vertical')
-        file_chooser = FileChooserListView(path='Main-exe', filters=['*.ttf'])
+        file_chooser = FileChooserListView(path='Main', filters=['*.ttf'])
         content.add_widget(file_chooser)
 
 
@@ -178,7 +178,7 @@ class TimeDisplayApp(App):
         pass
 
     def setflg(self,flgval):   # CSVファイルに設定用フラグを保存するメソッド
-        filename = 'onoD_opt.csv'
+        filename = 'Main/onoD_opt.csv'
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)
             data = list(reader)

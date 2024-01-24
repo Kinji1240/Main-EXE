@@ -43,7 +43,7 @@ class ClockApp(App):
     def load_csv(self):
         # CSVファイルからボタンの座標を取得するメソッド
 
-        filename = 'settings.csv'
+        filename = 'Main/settings.csv'
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)
             data = list(reader)

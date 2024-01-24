@@ -43,7 +43,7 @@ class AppSelectorApp(App):
         return self.layout
     
     def loadumu(self):
-        filename = 'onoD_opt.csv'
+        filename = 'Main/onoD_opt.csv'
         
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)
@@ -95,7 +95,7 @@ class AppSelectorApp(App):
 
     def rebutton(self, instance):
         print("完了ボタンが押されました。")
-        file_path = "onoD_opt.csv"
+        file_path = "Main/onoD_opt.csv"
         with open(file_path, mode='r') as file:
             reader = csv.reader(file)
             data = list(reader)

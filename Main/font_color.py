@@ -54,7 +54,7 @@ class BackgroundChangerApp(App):
 
         print("確定ボタンが押されました。")
          # ファイルの読み込みと書き込みはここで行います
-        file_path = "onoD_opt.csv"
+        file_path = "Main/onoD_opt.csv"
         
         # 既存のCSVファイルを読み込む
         with open(file_path, mode='r') as file:

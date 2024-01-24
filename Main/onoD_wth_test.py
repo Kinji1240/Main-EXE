@@ -40,7 +40,7 @@ class WeatherApp(App):
             return "不明な天気"
         
     def get_fpass(self):
-        filename = 'settings.csv'
+        filename = 'Main/settings.csv'
         
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)
@@ -63,7 +63,7 @@ class WeatherApp(App):
         fsize = "20"
 
         layout = BoxLayout(orientation='horizontal', spacing=10, size_hint=(0.7,0.7))
-        coordinates_df = pd.read_csv('IDOKEIDO-UTF8.csv')
+        coordinates_df = pd.read_csv('Main/IDOKEIDO-UTF8.csv')
 
         if 'latitude' in coordinates_df.columns and 'longitude' in coordinates_df.columns:
             self.selected_data = None
@@ -163,7 +163,7 @@ class WeatherApp(App):
 
     def loadopt(self):
         # CSVファイルに緯度・経度・日数を保存するメソッド
-        filename = 'MAINSYS\CSV\onoD_opt.csv'
+        filename = 'Main/onoD_opt.csv'
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)
             data = list(reader)

@@ -56,7 +56,7 @@ class MyButton(ToggleButtonBehavior, Image):
 class Test(BoxLayout):
     def __init__(self, **kwargs):
         super(Test, self).__init__(**kwargs)
-        image_dir = "Main-exe"
+        image_dir = "Main"
         self.orientation = 'vertical'
         self.image_name = ""
         self.current_image_index = 0
@@ -113,7 +113,7 @@ class Test(BoxLayout):
         syokiflg,setflg = self.optflg()
         if syokiflg == '0' and setflg == '0':
             # MAINSYS\CSV\selected_backgrounds.csv に self.image_name を上書き保存
-            csv_file_path = os.path.join("selected_backgrounds.csv")
+            csv_file_path = os.path.join("Main/selected_backgrounds.csv")
             with open(csv_file_path, mode='w', newline='') as csv_file:
                 csv_writer = csv.writer(csv_file)
                 csv_writer.writerow([self.image_name])
@@ -121,11 +121,11 @@ class Test(BoxLayout):
             print(f"Image confirmed: {self.image_name}")
 
             # "haikeigazou.py" を実行
-            subprocess.Popen(["python", "pos_mover.py"])
+            subprocess.Popen(["python", "Main/pos_mover.py"])
             App.get_running_app().stop()
         elif syokiflg == '1' and setflg == '1':
             # MAINSYS\CSV\selected_backgrounds.csv に self.image_name を上書き保存
-            csv_file_path = os.path.join( "selected_backgrounds.csv")
+            csv_file_path = os.path.join( "Main\selected_backgrounds.csv")
             with open(csv_file_path, mode='w', newline='') as csv_file:
                 csv_writer = csv.writer(csv_file)
                 csv_writer.writerow([self.image_name])
@@ -133,7 +133,7 @@ class Test(BoxLayout):
             print(f"Image confirmed: {self.image_name}")
             pass
         else :
-            subprocess.Popen(["python", "error.py"])
+            subprocess.Popen(["python", "Main/error.py"])
         App.get_running_app().stop()
 
     #def next_image(self, instance):
@@ -156,7 +156,7 @@ class Test(BoxLayout):
         App.get_running_app().stop()
     
     def optflg(self):
-        filename = 'onoD_opt.csv'
+        filename = 'Main/onoD_opt.csv'
         
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)
@@ -168,7 +168,7 @@ class Test(BoxLayout):
         return syokiopt, setopt
     
     def setflg(self,flgval):   # CSVファイルに設定用フラグを保存するメソッド
-        filename = 'MAINSYS\CSV\onoD_opt.csv'
+        filename = 'Main\onoD_opt.csv'
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)
             data = list(reader)

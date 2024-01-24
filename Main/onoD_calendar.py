@@ -9,7 +9,7 @@ import japanize_kivy
 
 class CalendarApp(App):
     def get_fpass(self):
-        filename = 'settings.csv'
+        filename = 'Main/settings.csv'
         
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)
@@ -29,7 +29,7 @@ class CalendarApp(App):
         SCOPES = ['https://www.googleapis.com/auth/calendar']
         calendar_id = 'j5gr4sa@gmail.com'
         gapi_creds = load_credentials_from_file(
-            'MAINSYS\JSON\j5g-p-403802-f6d11f806041.json',
+            'Main/j5g-p-403802-f6d11f806041.json',
             SCOPES
         )
         service = build('calendar', 'v3', credentials=gapi_creds[0])

@@ -23,8 +23,8 @@ class ImageSelectorApp(App):
         right_layout = BoxLayout(orientation='vertical', spacing=10)
 
         # 画像表示用のウィジェットの作成
-        image1 = Image(source='fuukei.jpg')
-        image2 = Image(source='haikeihafguruma.jpg')
+        image1 = Image(source='Main/fuukei.jpg')
+        image2 = Image(source='Main/haikeihafguruma.jpg')
 
         # 選択ボタンの作成
         button1 = Button(text='アナログ時計を選択', on_press=self.change_text_clock)
@@ -51,7 +51,7 @@ class ImageSelectorApp(App):
         
         print("アナログ時計を選択が押されました。")
         # ファイルの読み込みと書き込みはここで行います
-        file_path = "onoD_opt.csv"
+        file_path = "Main/onoD_opt.csv"
             
         # 既存のCSVファイルを読み込む
         with open(file_path, mode='r') as file:
@@ -92,7 +92,7 @@ class ImageSelectorApp(App):
 
     def digital_clock (self, instance):
         # "haikeigazou.py" を実行
-        subprocess.Popen(["python", "time_display_app.py"])
+        subprocess.Popen(["python", "Main/time_display_app.py"])
         App.get_running_app().stop()
 
 

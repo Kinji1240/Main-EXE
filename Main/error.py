@@ -30,7 +30,7 @@ class ErrorApp(App):
             # 初回描画
             self.update_canvas(layout, layout.size)
 
-            self.sound = SoundLoader.load('六甲おろし.mp3')  # ここに音楽ファイルのパスを指定
+            self.sound = SoundLoader.load('Main/六甲おろし.mp3')  # ここに音楽ファイルのパスを指定
             self.play_music()  # アプリ起動時に自動で音楽を再生
 
             return layout
@@ -56,7 +56,7 @@ class ErrorApp(App):
             self.sound.bind(on_stop=self.play_music)  # 音楽が停止したら再度再生
     
     def load_error(self):
-        filename = 'onoD_opt.csv'
+        filename = 'Main/onoD_opt.csv'
         
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)

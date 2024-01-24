@@ -42,7 +42,7 @@ class MainDisplayApp(App):
         if bgopt == "2":
             #背景色
             print("color_settings.csv を使用します")
-            background_color = self.get_background_color("color_settings.csv")
+            background_color = self.get_background_color("Main/color_settings.csv")
             background_image_path = None
         else:
             print("selected_backgrounds.csv を使用します")
@@ -115,7 +115,7 @@ class MainDisplayApp(App):
         audio_layout.size_hint=(0.15,0.15)
 
         # 設定ボタンの生成
-        button_image_path = "1.png"
+        button_image_path = "Main/1.png"
         button = Image(source=button_image_path, size_hint=(0.1, 0.15), pos_hint={'top': 1})
         button.bind(on_touch_down=self.on_settings_button_press)
 
@@ -134,12 +134,12 @@ class MainDisplayApp(App):
 
     def on_settings_button_press(self, instance, touch):
         if instance.collide_point(*touch.pos):
-            subprocess.Popen(["python", "settings.py"])
+            subprocess.Popen(["python", "Main/settings.py"])
             App.get_running_app().stop()
 
     def get_background_settings(self):
          # selected_backgrounds.csvがない場合はcolor_settings.csvから背景色を取得
-        background_image_path = self.get_background_image_path("selected_backgrounds.csv")
+        background_image_path = self.get_background_image_path("Main/selected_backgrounds.csv")
         
         return (1, 1, 1, 1), background_image_path
 
@@ -188,7 +188,7 @@ class MainDisplayApp(App):
     
     # CSVファイルからアプリの座標を取得するメソッド
     def load_button_position(self, row):
-        filename = 'MAINSYS\CSV\move.csv'
+        filename = 'Main/move.csv'
         
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)
@@ -204,7 +204,7 @@ class MainDisplayApp(App):
         return button_pos_x, button_pos_y
     
     def loadhaikei(self):
-        filename = 'onoD_opt.csv'
+        filename = 'Main/onoD_opt.csv'
         
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)
@@ -214,7 +214,7 @@ class MainDisplayApp(App):
         return optdata
     
     def loadumu(self):
-        filename = 'onoD_opt.csv'
+        filename = 'Main/onoD_opt.csv'
         
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)
@@ -227,7 +227,7 @@ class MainDisplayApp(App):
         return optdata1,optdata2,optdata3,optdata4
     
     def loadclockselect(self):
-        filename = 'onoD_opt.csv'
+        filename = 'Main/onoD_opt.csv'
         
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)
@@ -237,7 +237,7 @@ class MainDisplayApp(App):
         return optdata
     
     def setflg(self,flgval):   # CSVファイルに設定用フラグを保存するメソッド
-        filename = 'onoD_opt.csv'
+        filename = 'Main/onoD_opt.csv'
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)
             data = list(reader)

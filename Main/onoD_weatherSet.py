@@ -17,7 +17,7 @@ class WeatherApp(App):
 
     def build(self):
         layout = BoxLayout(orientation='vertical')
-        coordinates_df = pd.read_csv('IDOKEIDO-UTF8.csv')
+        coordinates_df = pd.read_csv('Main/IDOKEIDO-UTF8.csv')
 
         # coordinates_df（pd.read_csvで読み込んだデータフレーム）の列に 'latitude' と 'longitude' が存在するかを確認
         if 'latitude' in coordinates_df.columns and 'longitude' in coordinates_df.columns:
@@ -54,7 +54,7 @@ class WeatherApp(App):
                         pass
                 # CSVファイルに緯度・経度・日数を保存するメソッド
                 else:
-                    filename = 'MAINSYS\CSV\onoD_opt.csv'
+                    filename = 'Main/onoD_opt.csv'
                     with open(filename, 'r') as csvfile:
                         reader = csv.reader(csvfile)
                         data = list(reader)
