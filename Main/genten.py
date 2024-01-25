@@ -23,6 +23,7 @@ class GentenApp(App):
         subprocess.Popen(["python", app_path])
         print("main_facterへ遷移します")
 if __name__ == '__main__':
+    
     GentenApp().run()
 
     
