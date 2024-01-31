@@ -88,7 +88,7 @@ class MainApp(App):
 
     def on_start(self):
         # CSVファイルから背景色を取得
-        self.background_color, title_color, subtitle_color = self.get_colors_from_csv("Main\color_settings.csv")
+        self.background_color, title_color, subtitle_color = self.get_colors_from_csv(os.path.join(os.path.dirname(__file__), "color_settings.csv"))
         self.set_background_color(self.background_color, Window.width, Window.height)
         self.set_text_color(title_color, subtitle_color)
         
@@ -146,7 +146,7 @@ class MainApp(App):
     def launch_haikeigazou(self, instance):
         # "gazouhaikei.py" を実行
  
-        subprocess.Popen(["python", "Main/gazouhaikei.py"])
+        subprocess.Popen(["python", "gazouhaikei.py"])
         App.get_running_app().stop()
 
     def dismiss_popup(self, instance):
@@ -154,7 +154,7 @@ class MainApp(App):
 
         if instance.text == 'いいえ':
             # "teshaikei.py" を実行かつ、画面を閉じる
-            subprocess.Popen(["python", "Main/haikei.py"])
+            subprocess.Popen(["python", "haikei.py"])
             App.get_running_app().stop()
 
 

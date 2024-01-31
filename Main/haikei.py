@@ -84,7 +84,7 @@ class BackgroundChangerApp(App):
         text_red, text_green, text_blue, text_alpha = text_color
 
         # csvファイルの保存先ディレクトリ
-        csv_dir = 'Main'
+        csv_dir = 'Main-EXE\Main'
 
         # ディレクトリが存在しない場合、作成
         if not os.path.exists(csv_dir):
@@ -97,7 +97,7 @@ class BackgroundChangerApp(App):
                                 text_red, text_green, text_blue, text_alpha)
 
         # 保存後に別のPythonスクリプトを実行
-        script_path = 'Main/pos_mover.py'
+        script_path = os.path.join(os.path.dirname(__file__), "pos_mover.py")
         if os.path.exists(script_path):
             setflg_row = 10  # 設定画面遷移時に使用するフラグの保存行番号
             syokiflg_row = 11 # 初期設定時に使用するフラグの保存行番号
@@ -105,15 +105,15 @@ class BackgroundChangerApp(App):
             setflg = self.optflg(setflg_row)
             syokiflg = self.optflg(syokiflg_row)
             if syokiflg == '0' and setflg == '0':
-                subprocess.Popen(["python", "Main/pos_mover.py"])
+                subprocess.Popen(["python", "pos_mover.py"])
             elif syokiflg == '1' and setflg == '1':
                 pass
             else :
-                subprocess.Popen(["python", "Main/error.py"])
+                subprocess.Popen(["python", "error.py"])
             App.get_running_app().stop()
         else:
             print(f"スクリプト '{script_path}' は存在しません。")
-            subprocess.Popen(["python", "Main/error.py"])
+            subprocess.Popen(["python", "error.py"])
 
     def save_colors_to_csv(self, csv_file, background_red, background_green, background_blue, background_alpha,
                            text_red, text_green, text_blue, text_alpha):
@@ -134,16 +134,17 @@ class BackgroundChangerApp(App):
             })
     
     def optflg(self,val):
-        filename = 'Main/onoD_opt.csv'
+        filename = os.path.join(os.path.dirname(__file__), "onoD_opt.csv")
 
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)
             data = list(reader)
             optdata = data[val][1]
+            print(optdata)
         return optdata
     
     def setflg(self,flgval):   # CSVファイルに設定用フラグを保存するメソッド
-        filename = 'Main/onoD_opt.csv'
+        filename = os.path.join(os.path.dirname(__file__), 'onoD_opt.csv')
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)
             data = list(reader)

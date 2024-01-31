@@ -108,12 +108,12 @@ class ButtonMoverApp(App):
     def get_background_settings(self,bgopt):
         # selected_backgrounds.csvから背景画像のパスを取得
         if bgopt == 1:
-            background_image_path = self.get_background_image_path("Main/selected_backgrounds.csv")
+            background_image_path = self.get_background_image_path("selected_backgrounds.csv")
             return (1, 1, 1, 1), background_image_path
                 
         else:
         # selected_backgrounds.csvがない場合はcolor_settings.csvから背景色を取得
-            background_color = self.get_background_color("Main/color_settings.csv")
+            background_color = self.get_background_color("color_settings.csv")
             return background_color, None
 
     def get_background_image_path(self, csv_file):
@@ -146,7 +146,7 @@ class ButtonMoverApp(App):
 
     def save_button_positions(self):
         # 各ボタンの座標をCSVファイルに保存するメソッド
-        filename = 'Main/move.csv'
+        filename = 'move.csv'
         with open(filename, 'w', newline='') as csvfile:
             csv_writer = csv.writer(csvfile)
             for button in self.buttons:
@@ -158,11 +158,11 @@ class ButtonMoverApp(App):
         syokiflg,setflg = self.optflg()
         if syokiflg == '0' and setflg == '0':
             self.save_button_positions()
-            subprocess.Popen(["python", "Main/main_facter.py"])
+            subprocess.Popen(["python", "main_facter.py"])
         elif syokiflg == '1' and setflg == '1':
             pass
         else :
-            subprocess.Popen(["python", "Main/error.py"])
+            subprocess.Popen(["python", "error.py"])
         App.get_running_app().stop()
 
     def load_background_image(self, background_image_path):
@@ -182,7 +182,7 @@ class ButtonMoverApp(App):
         self.background_rect.size = self.layout.size
     
     def loadhaikei(self):
-        filename = 'Main/onoD_opt.csv'
+        filename = 'onoD_opt.csv'
         
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)
@@ -192,7 +192,7 @@ class ButtonMoverApp(App):
         return optdata
     
     def optflg(self):
-        filename = 'Main/onoD_opt.csv'
+        filename = 'onoD_opt.csv'
         
         with open(filename, 'r') as csvfile:
             reader = csv.reader(csvfile)
